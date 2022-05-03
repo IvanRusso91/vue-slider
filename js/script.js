@@ -32,7 +32,8 @@ const app = new Vue({
                 text: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis.',
             }
         ], 
-    counter:0,        
+    counter:0,
+         
     },
 
     methods:{
@@ -48,11 +49,27 @@ const app = new Vue({
                 this.counter = this.slides.length - 1;
             }  
         },
-        clickimmagine(index){
-            this.counter = index;     
+          
+        myStop() {
+            clearInterval(this.playNext);
+        },
+
+        myRestart(){
+            setInterval( this.playNext = setInterval(() =>{
+                this.next();
+            }, 3000))
         }
+  
+    },
+
+    mounted(){
+        this.playNext = setInterval(() =>{
+            this.next();
+        }, 3000)
 
     }
+    
+
 
 });
 
